@@ -1,0 +1,98 @@
+﻿@model MvcClothesStore.Models.SanPham
+
+@{
+    ViewBag.Title = "Themmoisp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ADD NEW PRODUCT</h2>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({selector:'textarea'});</script>
+
+@using (Html.BeginForm("Themmoisp", "AddProduct", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="control-label col-md-2">Tên sản phẩm</div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Ảnh sản phẩm</div>
+        <div class="col-md-10">
+            <input type="file" name="fileUpload" />
+            @ViewBag.Thongbao
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Ảnh sản phẩm</div>
+        <div class="col-md-10">
+            <input type="file" name="fileUpload2" />
+            @ViewBag.Thongbao
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Anh3SP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="fileupload3" />
+                @ViewBag.Thongbao
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Anh4SP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="fileupload4" />
+                @ViewBag.Thongbao
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Giá sản phẩm</div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GiaHienTai, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GiaHienTai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Ngày đăng sản phẩm</div>
+        <div class="col-md-10">
+            <input type="date" name="NgayDang" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Phân loại sản phẩm</div>
+        <div class="col-md-10">
+            @Html.DropDownList("id_pl")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Mô tả sản phẩm</div>
+        <div class="col-md-10">
+            <textarea name="Mota">Product description</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

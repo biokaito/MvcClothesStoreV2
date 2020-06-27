@@ -1,0 +1,258 @@
+﻿@using MvcClothesStore.Models
+@model List<Giohang>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@if (Model == null || Model.Count == 0)
+{
+   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <style>
+        <style type="text/css" > .table&amp;amp;gt;tbody&amp;amp;gt;tr&amp;amp;gt;td, .table&amp;amp;gt;tfoot&amp;amp;gt;tr&amp;amp;gt;td {
+            vertical-align: middle;
+        }
+
+        .container {
+            border: solid;
+            border-color: #eee;
+            border-width: 1px;
+            height: 600px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: 5px 10px #eee;
+        }
+
+        media screen and (max-width: 600px) {
+            table #cart tbody td .form-control
+
+        {
+            width: 20%;
+            display: inline !important;
+        }
+
+        .actions .btn {
+            width: 36%;
+            margin: 1.5em 0;
+        }
+
+        .actions .btn-info {
+            float: left;
+        }
+
+        .actions .btn-danger {
+            float: right;
+        }
+
+        table#cart thead {
+            display: none;
+        }
+
+        table#cart tbody td {
+            display: block;
+            padding: .6rem;
+            min-width: 320px;
+        }
+
+        table#cart tbody tr td:first-child {
+            background: #333;
+            color: #fff;
+        }
+
+        table#cart tbody td:before {
+            content: attr(data-th);
+            font-weight: bold;
+            display: inline-block;
+            width: 8rem;
+        }
+
+        table#cart tfoot td {
+            display: block;
+        }
+
+            table#cart tfoot td .btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+    <h1 class="text-center">Giỏ hàng</h1>
+    <div class="container">
+        <table id="cart" class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="width:50%">Tên sản phẩm</th>
+                    <th style="width:22%">Giá</th>
+                    <th style="width:8%">Số lượng</th>
+                    <th style="width:10%" class="text-center">Size</th>
+                    <th style="width:10%"> </th>
+                </tr>
+            </thead>
+        </table>
+        <h3 style="text-align:center;margin-top:50px;"><i>Giỏ hàng của bạn rỗng!</i></h3>
+    </div>
+    <a href="@Url.Action("Home", "ClothesStore")" class="btn btn-warning"><i class="fa fa-angle-left"></i> Quay lại mua hàng</a>
+}
+else
+{
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <style>
+        <style type="text/css" > .table&amp;amp;gt;tbody&amp;amp;gt;tr&amp;amp;gt;td, .table&amp;amp;gt;tfoot&amp;amp;gt;tr&amp;amp;gt;td {
+            vertical-align: middle;
+        }
+
+        .container {
+            border: solid;
+            border-color: #eee;
+            border-width: 1px;
+            height: 600px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: 5px 10px #eee;
+        }
+
+        media screen and (max-width: 600px) {
+            table #cart tbody td .form-control
+
+        {
+            width: 20%;
+            display: inline !important;
+        }
+
+        .actions .btn {
+            width: 36%;
+            margin: 1.5em 0;
+        }
+
+        .actions .btn-info {
+            float: left;
+        }
+
+        .actions .btn-danger {
+            float: right;
+        }
+
+        table#cart thead {
+            display: none;
+        }
+
+        table#cart tbody td {
+            display: block;
+            padding: .6rem;
+            min-width: 320px;
+        }
+
+        table#cart tbody tr td:first-child {
+            background: #333;
+            color: #fff;
+        }
+
+        table#cart tbody td:before {
+            content: attr(data-th);
+            font-weight: bold;
+            display: inline-block;
+            width: 8rem;
+        }
+
+        table#cart tfoot td {
+            display: block;
+        }
+
+            table#cart tfoot td .btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+    <h1 class="text-center">Giỏ hàng</h1>
+    <div class="container">
+            <table id="cart" class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width:50%">Tên sản phẩm</th>
+                        <th style="width:22%">Giá</th>
+                        <th style="width:8%">Số lượng</th>
+                        <th style="width:10%" class="text-center">Size</th>
+                        <th style="width:10%"> </th>
+                    </tr>
+                </thead>
+                @foreach (var i in Model)
+                {
+                <tbody>
+                    <tr>
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs">
+                                    <img src="~/images/@i.iAnhSP" class="img-responsive">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4 class="nomargin">@i.iTenSP</h4>
+                                    <p>Mô tả nơi đây nè bạn làm SQL ơi</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price" style="width:60px;" id="giaHT">@i.iGiaHienTai</td>
+                        <td data-th="Quantity">
+                            <input id="quaySo" min="1" class="form-control text-center" value="1" type="number">
+                        </td>
+                        <td id="babc" data-th="Subtotal" class="text-center">@i.iSize</td>
+                        <td class="actions" data-th="">
+                            <a href="@Url.Action("Edit","ClothersStore", new {iMaSP =i.iMaSP})">
+                                <button class="btn btn-info btn-sm" id="okmen">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </a>
+                            <a href="@Url.Action("XoaKhoiGio",new { iMaSP = i.iMaSP})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>}
+                <tfoot>
+                    <tr>
+                        <td style="margin-bottom:0px;">
+                            <a href="@Url.Action("Home", "ClothesStore")" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+                        </td>
+                        <td colspan="2" class="hidden-xs"> </td>
+                        <td class="hidden-xs text-center">
+                            <strong id="tongTien"> @Session["tongtien"] VND</strong>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("DatHang", "Giohang")" onclick="return confirm('Bạn đã kiểm tra kỹ chưa?');" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+                        </td>
+                    </tr>
+                </tfoot>
+        </table>
+    </div>
+    <script>
+        function go() {
+            var temp = sessionStorage.getItem('size');
+            var ok = document.getElementById("babc");
+            ok.innerHTML = temp;
+        }
+        go();
+        var soa = document.getElementById("quaySo");
+        soa.addEventListener('change', onChange);
+        function onChange() {
+            var soa1 = document.getElementById("quaySo");
+            var a = soa1.value;
+            var b = document.getElementById("tongTien");
+            var c = document.getElementById("giaHT");
+            var d = c.textContent;
+            var e = parseFloat(d);
+            var r = parseInt(a);
+            var z = e * r;
+            b.textContent = z + ' VND';
+
+        }
+    </script>
+}

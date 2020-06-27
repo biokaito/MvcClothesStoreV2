@@ -1,0 +1,90 @@
+﻿@model MvcClothesStore.Models.SanPham
+
+@{
+    ViewBag.Title = "Chitietsp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>THÔNG TIN CHI TIẾT SẢN PHẨM</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Product Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            Product Image 1
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+Model.AnhSP)"  width="120px"/>
+        </dd>
+
+        <dt>
+            Product Image 2
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+Model.Anh2SP)"  width="120px"/>
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Anh3SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh3SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anh4SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh4SP)
+        </dd>*@
+
+        <dt>
+            Price
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaHienTai) VNĐ
+        </dd>
+
+        <dt>
+            Date Time
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}",Model.NgayDang)
+        </dd>
+
+        <dt>
+            Classify
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoai.TenIdPl)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd style="width: 600px;text-align: justify">
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Suasp", new { id = Model.MaSP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

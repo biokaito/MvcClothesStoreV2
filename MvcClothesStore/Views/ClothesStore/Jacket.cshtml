@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcClothesStore.Models.SanPham>
+@{
+    ViewBag.Title = "Jacket";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="title">
+    <p class="titletext">JACKET</p>
+</div>
+<div class="catalog">
+    <ul>
+        <li><a href="@Url.Action("NewProducts", "ClothesStore")">NEW PRODUCTS</a></li>
+        <li><a href="@Url.Action("hdsw", "ClothesStore")">HOODIE/SWEATER</a></li>
+        <li><a href="@Url.Action("backpack", "ClothesStore")">BACKPACK</a></li>
+        <li><a href="@Url.Action("Shortpant", "ClothesStore")">SHORT/PANT</a></li>
+        <li><a href="@Url.Action("Jacket", "ClothesStore")">JACKET</a></li>
+    </ul>
+</div>
+<div class="products">
+
+    @foreach (var i in Model)
+    {
+        <div class="item">
+            <a href="@Url.Action("Details","ClothesStore", new { id = i.MaSP })">
+                <img alt="@i.TenSP" src="~/images/@i.AnhSP" width="300" />
+                <img class="Itemfront" src="~/images/@i.Anh2SP" width="300">
+            </a>
+            <h3 class="productName">@i.TenSP</h3>
+            <p class="productPrice">@i.GiaHienTai</p>
+        </div>
+    }
+
+
+</div>
+
